@@ -1,0 +1,35 @@
+{
+  "name": "vtai-todo-app-backend",
+  "version": "1.0.0",
+  "description": "Backend for TODO application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasithaWalpola/vtai-todo-app-backend.git"
+  },
+  "author": "Hasitha Walpola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hasithaWalpola/vtai-todo-app-backend/issues"
+  },
+  "homepage": "https://github.com/hasithaWalpola/vtai-todo-app-backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^6.9.0",
+    "pg": "^8.9.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

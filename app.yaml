@@ -1,0 +1,2 @@
+service: vtai-backend
+runtime: nodejs18
