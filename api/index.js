@@ -19,6 +19,8 @@ const PORT = process.env.PORT || 4000
 
 //DB Connection
 const client = new MongoClient(process.env.DB_CONNECT, {
+    tls: true,
+    tlsInsecure: false,
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,
@@ -26,7 +28,13 @@ const client = new MongoClient(process.env.DB_CONNECT, {
     }
 });
 
-let db;
+
+
+app.get('/test-db', async (req, res) => {
+    console.log(process.env.DB_CONNECT, 'req');
+
+    run().catch(console.dir);
+});
 
 async function run() {
     try {
@@ -35,10 +43,7 @@ async function run() {
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-    } catch (err) {
-        console.error("MongoDB Connection Error:", err);
-    }
-    finally {
+    } finally {
         // Ensures that the client will close when you finish/error
         await client.close();
     }
