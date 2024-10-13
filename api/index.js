@@ -1,9 +1,10 @@
 require("dotenv").config();
 const express = require('express');
+const serverless = require('serverless-http');
 const bodyParser = require("body-parser");
 var cors = require('cors')
 const app = express();
-const routes = require('./routes/routes')
+const routes = require('../src/routes/routes')
 const dotenv = require('dotenv')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
@@ -14,7 +15,7 @@ app.use(cors())
 
 
 //PORT 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 dotenv.config();
 
@@ -66,7 +67,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.use('/api/v1', routes)
+app.use('/api', routes)
 
 const server = app.listen(PORT, () => {
     console.log(`Server Running: http://localhost:${PORT}`);
@@ -77,3 +78,7 @@ process.on('SIGTERM', () => {
         console.log('Server Close: Process Terminated!');
     });
 });
+
+// Export for Vercel
+module.exports = app;
+module.exports.handler = serverless(app);
